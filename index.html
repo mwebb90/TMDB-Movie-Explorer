@@ -1,264 +1,893 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TMDB Movie Explorer | The Cinema Experience</title>
-  <style>
-    :root {
-      --burgundy: #671b32;
-      --dark: #110e14;
-      --gold: #f0c879;
-      --cream: #fff1da;
-    }
-    * {
-      box-sizing: border-box;
-    }
-    body {
-      margin: 0;
-      font-family: Georgia, 'Times New Roman', serif;
-      background: var(--dark);
-      color: var(--cream);
-    }
-    header {
-      background: #1d111a;
-      border-bottom: 2px solid var(--gold);
-      padding: 20px 6%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-    .logo {
-      color: var(--gold);
-      font-size: 25px;
-      font-weight: bold;
-      letter-spacing: 2px;
-    }
-    nav {
-      display: flex;
-      gap: 22px;
-      flex-wrap: wrap;
-    }
-    nav a {
-      color: var(--cream);
-      text-decoration: none;
-      font-family: Arial, sans-serif;
-      font-size: 14px;
-    }
-    nav a:hover,
-    nav a:focus-visible {
-      color: var(--gold);
-      text-decoration: underline;
-    }
-    .hero {
-      text-align: center;
-      padding: 90px 20px;
-      background:
-        linear-gradient(90deg,
-          #350a19 0%,
-          #741b37 15%,
-          #270d1b 35%,
-          #270d1b 65%,
-          #741b37 85%,
-          #350a19 100%);
-      border-bottom: 5px solid var(--gold);
-    }
-    .marquee {
-      display: inline-block;
-      border: 4px double var(--gold);
-      border-radius: 12px;
-      padding: 30px 45px;
-      box-shadow:
-        0 0 25px rgba(240, 200, 121, 0.35),
-        inset 0 0 25px rgba(240, 200, 121, 0.12);
-      background: rgba(15, 8, 14, 0.75);
-    }
-    .marquee h1 {
-      color: var(--gold);
-      font-size: clamp(32px, 6vw, 60px);
-      margin: 10px 0;
-      letter-spacing: 3px;
-      text-shadow: 0 0 15px rgba(240, 200, 121, 0.4);
-    }
-    .subtitle {
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      font-family: Arial, sans-serif;
-      font-size: 12px;
-      color: var(--cream);
-    }
-    .ticket {
-      display: inline-block;
-      margin-top: 30px;
-      background: var(--gold);
-      color: #23131b;
-      padding: 14px 28px;
-      border-radius: 5px;
-      font-family: Arial, sans-serif;
-      font-weight: bold;
-      letter-spacing: 1px;
-    }
-    main {
-      max-width: 1100px;
-      margin: auto;
-      padding: 65px 20px;
-    }
-    h2 {
-      color: var(--gold);
-      text-align: center;
-      font-size: 32px;
-    }
-    .intro {
-      text-align: center;
-      max-width: 650px;
-      margin: 0 auto 45px;
-      line-height: 1.8;
-      font-family: Arial, sans-serif;
-    }
-    .features {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 22px;
-    }
-    .feature {
-      background: linear-gradient(145deg, #321521, #1b121b);
-      border: 1px solid #a87949;
-      border-radius: 12px;
-      padding: 35px 22px;
-      text-align: center;
-      transition: transform 0.2s ease;
-    }
-    .feature:hover {
-      transform: translateY(-5px);
-    }
-    .feature .emoji {
-      font-size: 40px;
-    }
-    .feature h3 {
-      color: var(--gold);
-    }
-    .feature p {
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-      color: #e9d8ce;
-    }
-    .coming-soon {
-      text-align: center;
-      margin-top: 65px;
-      padding: 35px;
-      background: #26131d;
-      border: 2px dashed var(--gold);
-      border-radius: 12px;
-    }
-    footer {
-      text-align: center;
-      padding: 25px;
-      background: #1d111a;
-      border-top: 1px solid var(--gold);
-      font-family: Arial, sans-serif;
-      font-size: 13px;
-    }
-    @media (max-width: 600px) {
-      header {
-        justify-content: center;
-        text-align: center;
-      }
-      nav {
-        justify-content: center;
-      }
-      .hero {
-        padding: 60px 15px;
-      }
-      .marquee {
-        padding: 22px 15px;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TMDB Movie Explorer</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+--red: #75162b;
+--darkred: #3c0a19;
+--gold: #efbd60;
+--cream: #fff1d9;
+--black: #170e19;
+}
+{ box-sizing: border-box; }
+body {
+margin: 0;
+color: var(--cream);
+font-family: Montserrat, sans-serif;
+background: radial-gradient(ellipse at top,#51202e,#170e19 70%);
+}
+h1,h2,h3 { font-family: Cinzel,serif; }
+button,select,input { font: inherit; }
+button {
+cursor: pointer;
+color: var(--cream);
+background: linear-gradient(#a82b44,#641124);
+border: 1px solid var(--gold);
+border-radius: 25px;
+padding: 11px 24px;
+}
+button:hover { filter: brightness(1.2); }
+button:disabled { opacity: .4; cursor: default; }
+a { color: inherit; text-decoration: none; }
+header {
+position: sticky;
+top: 0;
+z-index: 20;
+background: linear-gradient(90deg,#330817,#74182d,#330817);
+border-bottom: 3px solid var(--gold);
+padding: 17px 4%;
+display: flex;
+align-items: center;
+justify-content: space-between;
+flex-wrap: wrap;
+gap: 15px;
+}
+.logo {
+color: var(--gold);
+font-family: Cinzel,serif;
+font-weight: 900;
+}
+nav { display: flex; flex-wrap: wrap; gap: 20px; }
+nav a { font-size: 13px; }
+nav a:hover { color: var(--gold); }
+.page {
+display: none;
+max-width: 1250px;
+min-height: 75vh;
+padding: 35px 4% 65px;
+margin: auto;
+}
+.page.active { display: block; }
+/* THEATER CURTAINS /
+.curtains {
+position: relative;
+padding: 25px 20px 50px;
+background:
+linear-gradient(90deg,
+#390514 0%,#8a1230 4%,
+#4a071a 8%,transparent 17%,
+transparent 83%,#4a071a 92%,
+#8a1230 96%,#390514 100%);
+}
+.curtains:before {
+content: "";
+display: block;
+height: 19px;
+margin: -25px -20px 25px;
+background: repeating-linear-gradient(
+90deg,#4a071a 0 18px,
+#9d1b37 18px 35px,
+#380512 35px 45px);
+border-bottom: 3px solid var(--gold);
+}
+/* ROUND GLOWING THEATER LIGHTS /
+.marquee {
+max-width: 970px;
+margin: 20px auto 35px;
+padding: 19px;
+border: 2px solid #b67b39;
+border-radius: 5px;
+background-color: #541126;
+background-image:
+radial-gradient(circle,#fffde6 0 3px,#ffe4a0 4px 6px,#d78b32 7px 8px,transparent 9px),
+radial-gradient(circle,#fffde6 0 3px,#ffe4a0 4px 6px,#d78b32 7px 8px,transparent 9px),
+radial-gradient(circle,#fffde6 0 3px,#ffe4a0 4px 6px,#d78b32 7px 8px,transparent 9px),
+radial-gradient(circle,#fffde6 0 3px,#ffe4a0 4px 6px,#d78b32 7px 8px,transparent 9px);
+background-size:
+24px 19px,24px 19px,
+19px 24px,19px 24px;
+background-position:
+left top,left bottom,
+left top,right top;
+background-repeat:
+repeat-x,repeat-x,repeat-y,repeat-y;
+box-shadow:
+0 0 12px #ffc96d99,
+0 0 30px #e7a43b55,
+0 7px 22px #0009;
+}
+.marquee-inner {
+background: linear-gradient(#791a30,#3c0a1b);
+border: 2px solid #e7b75b;
+text-align: center;
+padding: 17px;
+}
+.marquee h1 {
+color: #ffd17b;
+text-shadow: 0 0 8px #e5a64799;
+letter-spacing: 3px;
+font-size: clamp(24px,4vw,45px);
+margin: 0;
+}
+.marquee p {
+color: #f9dba2;
+letter-spacing: 3px;
+font-size: 11px;
+}
+.center { text-align: center; }
+.gold { color: var(--gold); }
+.intro {
+text-align: center;
+max-width: 760px;
+margin: 55px auto;
+line-height: 1.9;
+}
+.intro h2 { color: var(--gold); }
+.feature-grid {
+display: grid;
+grid-template-columns: repeat(4,1fr);
+gap: 22px;
+}
+.feature {
+text-align: center;
+padding: 25px 15px;
+background: linear-gradient(#67182e,#39101f);
+border: 2px solid var(--gold);
+box-shadow: 0 5px 17px #0008;
+transition: transform .2s;
+}
+.feature:hover { transform: translateY(-5px); }
+.feature .symbol { font-size: 40px; }
+.feature h3 { color: var(--gold); font-size: 17px; }
+.feature p { font-size: 12px; line-height: 1.7; }
+.closing {
+text-align: center;
+margin: 65px auto 10px;
+border-top: 1px solid #bd8b48;
+padding-top: 25px;
+}
+.closing h2 { color: var(--gold); }
+/* MOVIE POSTER CARDS /
+.movie-grid {
+display: grid;
+grid-template-columns: repeat(4,minmax(0,1fr));
+gap: 25px;
+margin-top: 30px;
+}
+.movie-card {
+padding: 11px;
+text-align: center;
+border: 2px solid var(--gold);
+background: linear-gradient(#671a30,#350c1c);
+box-shadow: 0 8px 20px #0009;
+}
+.poster {
+width: 100%;
+aspect-ratio: 2/3;
+object-fit: cover;
+background: #38202b;
+}
+.placeholder {
+display: grid;
+place-items: center;
+padding: 15px;
+}
+.movie-card h3 {
+font-family: Montserrat,sans-serif;
+font-size: 14px;
+min-height: 35px;
+}
+.rating { color: var(--gold); font-weight: bold; }
+.movie-card button { width: 100%; margin-top: 12px; }
+.status { text-align: center; padding: 20px; }
+/* SEARCH AND FILTERS /
+.search-form {
+display: flex;
+gap: 12px;
+max-width: 900px;
+margin: 30px auto 18px;
+}
+.search-form input {
+flex: 1;
+min-width: 0;
+padding: 13px 20px;
+border-radius: 25px;
+border: 1px solid var(--gold);
+background: var(--cream);
+color: #24131d;
+}
+.filters {
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 15px;
+}
+.filters select {
+background: #2b1320;
+color: var(--gold);
+border: 1px solid var(--gold);
+border-radius: 25px;
+padding: 10px 18px;
+}
+.pagination {
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 15px;
+margin-top: 30px;
+}
+/* MOVIE DETAILS /
+.detail-panel {
+display: grid;
+grid-template-columns: minmax(200px,340px) 1fr;
+gap: 35px;
+border: 2px solid var(--gold);
+background: #201520;
+padding: 25px;
+}
+.detail-panel img { width: 100%; border: 3px solid var(--gold); }
+.detail-panel h1 { color: var(--gold); }
+.detail-panel p { line-height: 1.8; }
+.chips { display: flex; flex-wrap: wrap; gap: 9px; margin: 18px 0; }
+.chip {
+display: inline-block;
+padding: 7px 13px;
+border: 1px solid var(--gold);
+border-radius: 25px;
+font-size: 12px;
+}
+.info-strip {
+display: grid;
+grid-template-columns: repeat(4,1fr);
+gap: 15px;
+padding: 22px;
+background: #60162c;
+border: 1px solid var(--gold);
+margin-top: 15px;
+text-align: center;
+}
+.info-strip strong { display: block; color: var(--gold); margin-bottom: 8px; }
+/* WATCHLIST /
+.watchlist-grid {
+display: grid;
+grid-template-columns: repeat(2,1fr);
+gap: 20px;
+margin-top: 35px;
+}
+.watch-card {
+display: flex;
+position: relative;
+gap: 17px;
+background: var(--cream);
+color: #351625;
+padding: 16px;
+border: 2px solid var(--gold);
+border-radius: 8px;
+}
+.watch-card img { width: 110px; height: 160px; object-fit: cover; }
+.watch-card h3 { margin: 0 0 10px; }
+.watch-card p { font-size: 13px; }
+.watch-card button { padding: 7px 13px; }
+.remove {
+position: absolute;
+right: 7px;
+top: 5px;
+border: 0;
+background: none;
+color: #a52a39;
+font-size: 24px;
+}
+.empty { text-align: center; margin: 65px auto; }
+.empty h2 { color: var(--gold); }
+/* MOVIE MATCHMAKER /
+.quiz-start {
+min-height: 65vh;
+display: grid;
+place-items: center;
+}
+.quiz-sign {
+text-align: center;
+color: #64182c;
+padding: 38px 45px;
+border: 16px solid transparent;
+background:
+linear-gradient(#fff0d5,#fff0d5) padding-box,
+radial-gradient(circle,#fffce0 0 3px,#ffd06d 4px 6px,#9e4a20 7px,transparent 8px) border-box;
+background-size: auto,20px 20px;
+box-shadow: 0 0 25px #e9ae47,0 0 50px #e9ae4777;
+}
+.quiz-sign h1 { font-size: clamp(23px,4vw,42px); }
+.quiz-progress {
+display: flex;
+justify-content: space-between;
+margin: 35px 0 12px;
+}
+.progress-track { height: 7px; background: #573143; border-radius: 8px; }
+.progress-fill { height: 100%; width: 0; background: var(--gold); }
+.quiz-question { text-align: center; margin: 45px auto; }
+.answer-grid {
+display: grid;
+grid-template-columns: repeat(2,1fr);
+gap: 20px;
+max-width: 950px;
+margin: auto;
+}
+.answer {
+min-height: 80px;
+border-radius: 12px;
+font-weight: bold;
+}
+.answer.selected {
+background: var(--gold);
+color: #21101c;
+}
+.quiz-actions {
+display: flex;
+justify-content: space-between;
+max-width: 950px;
+margin: 40px auto;
+}
+footer {
+text-align: center;
+color: var(--gold);
+background: linear-gradient(#62172c,#290914);
+border-top: 2px solid var(--gold);
+padding: 20px;
+font-size: 12px;
+line-height: 2;
+}
+footer small { color: var(--cream); }
+[hidden] { display: none !important; }
+@media(max-width:800px) {
+.feature-grid,.movie-grid { grid-template-columns: repeat(2,1fr); }
+.watchlist-grid { grid-template-columns: 1fr; }
+.detail-panel { grid-template-columns: 1fr; }
+.detail-panel img { max-width: 320px; }
+.info-strip { grid-template-columns: repeat(2,1fr); }
+}
+@media(max-width:500px) {
+.page { padding: 20px 3% 45px; }
+nav { gap: 12px; }
+nav a { font-size: 11px; }
+.feature-grid,.movie-grid { gap: 12px; }
+.feature { padding: 15px 8px; }
+.feature h3 { font-size: 13px; }
+.movie-card h3 { font-size: 12px; }
+.marquee h1 { letter-spacing: 1px; }
+.marquee p { letter-spacing: 1px; }
+.search-form { flex-wrap: wrap; }
+.search-form button { width: 100%; }
+.answer-grid { grid-template-columns: 1fr; }
+.quiz-sign { padding: 20px; }
+.watch-card img { width: 85px; height: 125px; }
+}
+</style>
 </head>
 <body>
-  <header>
-    <div class="logo">🎬 MOVIE EXPLORER</div>
-    <nav aria-label="Main navigation">
-      <a href="#home">Home</a>
-      <a href="#features">Now Showing</a>
-      <a href="#features">Discover</a>
-      <a href="#coming-soon">Watchlist</a>
-    </nav>
-  </header>
-  <section class="hero" id="home">
-    <div class="marquee">
-      <p class="subtitle">Welcome to the Cinema</p>
-      <h1>TMDB Movie Explorer</h1>
-      <p>Your Ticket to Movie Discovery</p>
-    </div>
-    <div class="ticket">
-      🍿 ADMIT ONE • MOVIE MAGIC AWAITS
-    </div>
-  </section>
-  <main>
-    <section id="features">
-      <h2>✦ Coming Attractions ✦</h2>
-      <p class="intro">
-        Step into the world of movies! Discover
-        popular films, explore different genres,
-        search for your favorites, and build
-        your own personal watchlist.
-      </p>
-      <div class="features">
-        <article class="feature">
-          <div class="emoji" aria-hidden="true">🎞️</div>
-          <h3>Now Showing</h3>
-          <p>
-            Browse popular movies and discover
-            what's trending.
-          </p>
-        </article>
-        <article class="feature">
-          <div class="emoji" aria-hidden="true">🔎</div>
-          <h3>Movie Search</h3>
-          <p>
-            Find your favorite movies and
-            explore new titles.
-          </p>
-        </article>
-        <article class="feature">
-          <div class="emoji" aria-hidden="true">🎭</div>
-          <h3>Explore Genres</h3>
-          <p>
-            Discover movies based on the
-            genres you love.
-          </p>
-        </article>
-        <article class="feature">
-          <div class="emoji" aria-hidden="true">🎟️</div>
-          <h3>My Watchlist</h3>
-          <p>
-            Save movies you want to watch
-            and keep them in one place.
-          </p>
-        </article>
-      </div>
-    </section>
-    <section class="coming-soon" id="coming-soon">
-      <h2>🍿 Opening Soon!</h2>
-      <p>
-        We're preparing the ultimate movie
-        discovery experience.
-      </p>
-      <p>
-        Our application is currently
-        under development.
-      </p>
-    </section>
-  </main>
-  <footer>
-    <p>TMDB Movie Explorer | IT 4403 | 2026</p>
-    <p>
-      This product uses the TMDB API but is
-      not endorsed or certified by TMDB.
-    </p>
-  </footer>
+<header>
+<a class="logo" href="#home">🎟 TMDB MOVIE EXPLORER</a>
+<nav>
+<a href="#home">Home</a>
+<a href="#now-showing">Now Showing</a>
+<a href="#quiz">Movie Quiz</a>
+<a href="#discover">Discover</a>
+<a href="#watchlist">Watchlist <span id="watch-count"></span></a>
+</nav>
+</header>
+<main>
+<section id="home" class="page active">
+<div class="curtains">
+<p class="center gold">✦ WELCOME TO THE CINEMA ✦</p>
+<div class="marquee">
+<div class="marquee-inner">
+<h1>TMDB MOVIE EXPLORER</h1>
+<p>Your Ticket to Movie Discovery</p>
+</div>
+</div>
+<div class="intro">
+<h2>🍿 Coming Attractions 🍿</h2>
+<p>Step into the world of movies! Discover popular films, explore different genres, search for your favorites, and build your own personal watchlist.</p>
+</div>
+<div class="feature-grid">
+<a class="feature" href="#now-showing">
+<div class="symbol">🎞️</div>
+<h3>Now Showing</h3>
+<p>Browse popular movies and explore new titles.</p>
+</a>
+<a class="feature" href="#quiz">
+<div class="symbol">🎟️</div>
+<h3>Movie Matchmaker</h3>
+<p>Take a quiz to find your perfect match.</p>
+</a>
+<a class="feature" href="#discover">
+<div class="symbol">🎬</div>
+<h3>Explore Genres</h3>
+<p>Discover movies based on the genres you love.</p>
+</a>
+<a class="feature" href="#watchlist">
+<div class="symbol">🍿</div>
+<h3>My Watchlist</h3>
+<p>Save movies you want to watch and keep them in one place.</p>
+</a>
+</div>
+<div class="closing">
+<h2>Lights. Camera. Discover.</h2>
+<p>Your next favorite movie is just a click away.</p>
+</div>
+</div>
+</section>
+<section id="now-showing" class="page">
+<div class="curtains">
+<div class="marquee">
+<div class="marquee-inner">
+<h1>NOW SHOWING</h1>
+<p>POPULAR MOVIES SHOWING NOW</p>
+</div>
+</div>
+<div id="now-status" class="status"></div>
+<div id="now-grid" class="movie-grid"></div>
+</div>
+</section>
+<section id="discover" class="page">
+<div class="marquee">
+<div class="marquee-inner">
+<h1>THE BOX OFFICE</h1>
+<p>SEARCH. EXPLORE. FIND YOUR NEXT FAVORITE FILM.</p>
+</div>
+</div>
+<form id="search-form" class="search-form">
+<input id="search-input" placeholder="Search for a movie..." aria-label="Movie search">
+<button type="submit">Search</button>
+</form>
+<div class="filters">
+<select id="genre-filter"><option value="">All Genres</option></select>
+<select id="year-filter"><option value="">All Years</option></select>
+<select id="sort-filter">
+<option value="popularity.desc">Most Popular</option>
+<option value="vote_average.desc">Highest Rated</option>
+<option value="primary_release_date.desc">Newest</option>
+<option value="primary_release_date.asc">Oldest</option>
+</select>
+</div>
+<div id="discover-status" class="status"></div>
+<div id="discover-grid" class="movie-grid"></div>
+<div class="pagination">
+<button id="prev-page">Previous</button>
+<span id="page-number"></span>
+<button id="next-page">Next</button>
+</div>
+</section>
+<section id="details" class="page">
+<div id="detail-content"></div>
+</section>
+<section id="watchlist" class="page">
+<div class="marquee">
+<div class="marquee-inner">
+<h1>MY WATCHLIST</h1>
+<p>YOUR SAVED MOVIES</p>
+</div>
+</div>
+<div id="watchlist-grid" class="watchlist-grid"></div>
+<div id="empty-watchlist" class="empty" hidden>
+<div style="font-size:70px">🍿</div>
+<h2>Your watchlist is empty!</h2>
+<p>Start exploring and save your favorite movies.</p>
+<a href="#discover"><button>Explore Movies</button></a>
+</div>
+</section>
+<section id="quiz" class="page">
+<div id="quiz-start" class="quiz-start">
+<div class="quiz-sign">
+🎬
+<h1>READY TO FIND YOUR<br>PERFECT MATCH?</h1>
+<button id="start-quiz">LET'S GO</button>
+</div>
+</div>
+<div id="quiz-questions" hidden>
+<div class="marquee">
+<div class="marquee-inner">
+<h1>FIND YOUR PERFECT MATCH</h1>
+<p>Your next movie night starts here.</p>
+</div>
+</div>
+<div class="quiz-progress">
+<span id="question-count"></span>
+<span id="progress-label"></span>
+</div>
+<div class="progress-track">
+<div id="progress-fill" class="progress-fill"></div>
+</div>
+<h2 id="question-text" class="quiz-question"></h2>
+<div id="answer-options" class="answer-grid"></div>
+<div class="quiz-actions">
+<button id="quiz-back">Back</button>
+<button id="quiz-next">Next</button>
+</div>
+</div>
+<div id="quiz-results" hidden>
+<div class="marquee">
+<div class="marquee-inner">
+<h1>YOUR MOVIE MATCHES</h1>
+<p>THE SHOW IS ABOUT TO BEGIN</p>
+</div>
+</div>
+<div id="quiz-result-status" class="status"></div>
+<div id="quiz-result-grid" class="movie-grid"></div>
+<div class="center">
+<button id="quiz-restart">Take Quiz Again</button>
+</div>
+</div>
+</section>
+</main>
+<footer>
+TMDB Movie Explorer | IT 4403 | 2026
+<br>
+<small>This product uses the TMDB API but is not endorsed or certified by TMDB.</small>
+</footer>
+<script>
+"use strict";
+// REPLACE WITH YOUR TMDB API KEY
+const TMDB_API_KEY = "PASTE_YOUR_TMDB_API_KEY_HERE";
+const API = "https://api.themoviedb.org/3";
+const IMG = "https://image.tmdb.org/t/p/w500";
+const $ = id => document.getElementById(id);
+let genres = [];
+let currentQuery = "";
+let discoverPage = 1;
+let discoverTotal = 1;
+let lastResults = "#discover";
+let requestNumber = 0;
+let watchlist = {};
+try {
+watchlist = JSON.parse(localStorage.getItem("movie-watchlist") || "{}");
+} catch {
+watchlist = {};
+}
+function safe(value) {
+return String(value ?? "").replace(/[&<>"']/g, char => ({
+"&":"&amp;","<":"&lt;",">":"&gt;",
+'"':"&quot;","'":"&#39;"
+}[char]));
+}
+async function tmdb(path, params = {}) {
+if (TMDB_API_KEY === "PASTE_YOUR_TMDB_API_KEY_HERE") {
+throw new Error("Add your TMDB API key to load movies.");
+}
+const url = new URL(API + path);
+Object.entries({...params, api_key:TMDB_API_KEY}).forEach(([key,value]) => {
+if (value !== "" && value != null) url.searchParams.set(key,value);
+});
+const response = await fetch(url);
+if (!response.ok) throw new Error("Movie request failed: " + response.status);
+return response.json();
+}
+function poster(movie) {
+if (movie.poster_path) {
+return `<img class="poster" src="${IMG}${safe(movie.poster_path)}" alt="Poster for ${safe(movie.title)}" loading="lazy">`;
+}
+return `<div class="poster placeholder">${safe(movie.title)}</div>`;
+}
+function movieCard(movie) {
+return `
+<article class="movie-card">
+${poster(movie)}
+<h3>${safe(movie.title)}</h3>
+<div class="rating">★ ${Number(movie.vote_average || 0).toFixed(1)}</div>
+<button data-details="${movie.id}">View Details</button>
+</article>`;
+}
+function renderCards(id,movies) {
+$(id).innerHTML = movies.map(movieCard).join("");
+}
+function navigate() {
+const page = location.hash.slice(1) || "home";
+const target = $(page) && $(page).classList.contains("page") ? page : "home";
+document.querySelectorAll(".page").forEach(element => {
+element.classList.toggle("active",element.id === target);
+});
+window.scrollTo(0,0);
+if (target === "watchlist") renderWatchlist();
+}
+window.addEventListener("hashchange",navigate);
+async function loadNowShowing() {
+$("now-status").textContent = "Loading movies...";
+try {
+const data = await tmdb("/movie/now_playing",{page:1});
+renderCards("now-grid",data.results.slice(0,8));
+$("now-status").textContent = "";
+} catch(error) {
+$("now-status").textContent = error.message;
+}
+}
+async function loadGenres() {
+try {
+const data = await tmdb("/genre/movie/list");
+genres = data.genres;
+$("genre-filter").innerHTML = '<option value="">All Genres</option>' +
+genres.map(g => `<option value="${g.id}">${safe(g.name)}</option>`).join("");
+} catch(error) {
+console.warn(error.message);
+}
+}
+function fillYears() {
+const currentYear = new Date().getFullYear();
+for(let year=currentYear;year>=1950;year--) {
+$("year-filter").add(new Option(year,year));
+}
+}
+async function loadDiscover() {
+const request = ++requestNumber;
+$("discover-status").textContent = "Searching movies...";
+$("discover-grid").innerHTML = "";
+const genre = $("genre-filter").value;
+const year = $("year-filter").value;
+const sort = $("sort-filter").value;
+try {
+let path,params;
+if(currentQuery) {
+path = "/search/movie";
+params = {query:currentQuery,page:discoverPage};
+} else {
+path = "/discover/movie";
+params = {page:discoverPage,sort_by:sort};
+if(genre) params.with_genres = genre;
+if(year) params.primary_release_year = year;
+}
+const data = await tmdb(path,params);
+if(request !== requestNumber) return;
+let movies = data.results || [];
+if(currentQuery) {
+if(genre) movies = movies.filter(m => m.genre_ids?.includes(Number(genre)));
+if(year) movies = movies.filter(m => m.release_date?.startsWith(year));
+if(sort === "vote_average.desc") movies.sort((a,b) => b.vote_average-a.vote_average);
+if(sort === "primary_release_date.desc") movies.sort((a,b) => (b.release_date||"").localeCompare(a.release_date||""));
+if(sort === "primary_release_date.asc") movies.sort((a,b) => (a.release_date||"").localeCompare(b.release_date||""));
+}
+renderCards("discover-grid",movies);
+discoverTotal = Math.min(data.total_pages || 1,500);
+$("discover-status").textContent = movies.length ? "" : "No matching movies found on this page.";
+$("page-number").textContent = `Page ${discoverPage} of ${discoverTotal}`;
+$("prev-page").disabled = discoverPage <= 1;
+$("next-page").disabled = discoverPage >= discoverTotal;
+} catch(error) {
+if(request !== requestNumber) return;
+$("discover-status").textContent = error.message;
+$("page-number").textContent = "";
+}
+}
+$("search-form").addEventListener("submit",event => {
+event.preventDefault();
+currentQuery = $("search-input").value.trim();
+discoverPage = 1;
+loadDiscover();
+});
+["genre-filter","year-filter","sort-filter"].forEach(id => {
+$(id).addEventListener("change",() => {
+discoverPage = 1;
+loadDiscover();
+});
+});
+$("prev-page").onclick = () => {
+if(discoverPage > 1) {
+discoverPage--;
+loadDiscover();
+}
+};
+$("next-page").onclick = () => {
+if(discoverPage < discoverTotal) {
+discoverPage++;
+loadDiscover();
+}
+};
+async function showDetails(id) {
+lastResults = location.hash === "#details" ? lastResults : (location.hash || "#discover");
+location.hash = "details";
+$("detail-content").innerHTML = '<p class="status">Loading movie details...</p>';
+try {
+const movie = await tmdb("/movie/"+id,{append_to_response:"credits,release_dates"});
+const director = movie.credits?.crew?.find(p => p.job === "Director")?.name || "Not available";
+const cast = movie.credits?.cast?.slice(0,5).map(p => p.name).join(", ") || "Not available";
+const saved = !!watchlist[movie.id];
+const date = movie.release_date || "Unknown";
+const chips = (movie.genres||[]).map(g => `<span class="chip">${safe(g.name)}</span>`).join("");
+const certification = movie.release_dates?.results?.find(r => r.iso_3166_1 === "US")?.release_dates?.find(r => r.certification)?.certification || "Not rated";
+$("detail-content").innerHTML = `
+<div class="detail-panel">
+<div>${poster(movie)}</div>
+<div>
+<h1>${safe(movie.title)}</h1>
+<p class="gold">★ ${Number(movie.vote_average||0).toFixed(1)}/10 &nbsp; | &nbsp; ${safe(date.slice(0,4))} &nbsp; | &nbsp; ${movie.runtime||"?"} min</p>
+<div class="chips">${chips}</div>
+<p>${safe(movie.overview || "No description available.")}</p>
+<p><strong>Starring:</strong> ${safe(cast)}</p>
+<button id="save-detail">${saved ? "Remove from Watchlist" : "Add to Watchlist"}</button>
+<button id="back-detail">Back to Results</button>
+</div>
+</div>
+<div class="info-strip">
+<div><strong>Director</strong>${safe(director)}</div>
+<div><strong>Release Date</strong>${safe(date)}</div>
+<div><strong>Rating</strong>${safe(certification)}</div>
+<div><strong>Language</strong>${safe(movie.original_language?.toUpperCase())}</div>
+</div>`;
+$("save-detail").onclick = () => {
+if(watchlist[movie.id]) delete watchlist[movie.id];
+else watchlist[movie.id] = movie;
+saveWatchlist();
+$("save-detail").textContent = watchlist[movie.id] ? "Remove from Watchlist" : "Add to Watchlist";
+};
+$("back-detail").onclick = () => location.hash = lastResults;
+} catch(error) {
+$("detail-content").textContent = error.message;
+}
+}
+function saveWatchlist() {
+try {
+localStorage.setItem("movie-watchlist",JSON.stringify(watchlist));
+} catch(error) {
+alert("Unable to save watchlist in this browser.");
+}
+$("watch-count").textContent = `(${Object.keys(watchlist).length})`;
+renderWatchlist();
+}
+function renderWatchlist() {
+const movies = Object.values(watchlist);
+$("empty-watchlist").hidden = movies.length > 0;
+$("watchlist-grid").innerHTML = movies.map(movie => `
+<article class="watch-card">
+<div>${poster(movie)}</div>
+<div>
+<h3>${safe(movie.title)}</h3>
+<p>${safe(movie.release_date?.slice(0,4) || "Unknown")}</p>
+<p class="rating">★ ${Number(movie.vote_average||0).toFixed(1)}</p>
+<button data-details="${movie.id}">View Details</button>
+</div>
+<button class="remove" data-remove="${movie.id}" aria-label="Remove movie">×</button>
+</article>
+`).join("");
+}
+document.addEventListener("click",event => {
+const detail = event.target.closest("[data-details]");
+const remove = event.target.closest("[data-remove]");
+if(detail) showDetails(detail.dataset.details);
+if(remove) {
+delete watchlist[remove.dataset.remove];
+saveWatchlist();
+}
+});
+/* FOUR QUESTION MOVIE QUIZ /
+const questions = [
+{
+text:"What kind of movie are you in the mood for?",
+options:[
+["Something Funny",35],
+["Something Magical",14],
+["Something Romantic",10749],
+["Something Thrilling",53]
+]
+},
+{
+text:"What kind of adventure sounds best?",
+options:[
+["An Action-Packed Adventure",28],
+["A Journey Into Space",878],
+["A Mysterious Story",9648],
+["A Heartwarming Story",18]
+]
+},
+{
+text:"Who would you like to watch with?",
+options:[
+["The Whole Family",10751],
+["My Friends",35],
+["Someone Special",10749],
+["Just Myself",18]
+]
+},
+{
+text:"How should the movie make you feel?",
+options:[
+["Excited",12],
+["Inspired",18],
+["Scared",27],
+["Happy",35]
+]
+}
+];
+let questionIndex = 0;
+let answers = [];
+function showQuizPart(part) {
+["quiz-start","quiz-questions","quiz-results"].forEach(id => {
+$(id).hidden = id !== part;
+});
+}
+function renderQuestion() {
+const question = questions[questionIndex];
+$("question-count").textContent = `Question ${questionIndex+1} of ${questions.length}`;
+$("progress-label").textContent = `${Math.round(questionIndex/questions.length100)}% complete`;
+$("progress-fill").style.width = `${questionIndex/questions.length100}%`;
+$("question-text").textContent = question.text;
+$("answer-options").innerHTML = question.options.map((option,index) =>
+`<button class="answer ${answers[questionIndex] === index ? "selected" : ""}" data-answer="${index}">${safe(option[0])}</button>`
+).join("");
+$("quiz-back").disabled = questionIndex === 0;
+$("quiz-next").disabled = answers[questionIndex] === undefined;
+$("quiz-next").textContent = questionIndex === questions.length-1 ? "See My Matches" : "Next";
+}
+$("start-quiz").onclick = () => {
+questionIndex = 0;
+answers = [];
+showQuizPart("quiz-questions");
+renderQuestion();
+};
+$("answer-options").addEventListener("click",event => {
+const button = event.target.closest("[data-answer]");
+if(!button) return;
+answers[questionIndex] = Number(button.dataset.answer);
+renderQuestion();
+});
+$("quiz-back").onclick = () => {
+if(questionIndex > 0) {
+questionIndex--;
+renderQuestion();
+}
+};
+$("quiz-next").onclick = () => {
+if(answers[questionIndex] === undefined) return;
+if(questionIndex < questions.length-1) {
+questionIndex++;
+renderQuestion();
+} else {
+showQuizResults();
+}
+};
+async function showQuizResults() {
+showQuizPart("quiz-results");
+$("quiz-result-status").textContent = "Finding your perfect movie matches...";
+const scores = {};
+questions.forEach((question,index) => {
+const genre = question.options[answers[index]]?.[1];
+if(genre) scores[genre] = (scores[genre]||0)+1;
+});
+const chosenGenres = Object.keys(scores).sort((a,b) => scores[b]-scores[a]).slice(0,2);
+try {
+const data = await tmdb("/discover/movie",{
+with_genres:chosenGenres.join("|"),
+sort_by:"vote_average.desc",
+"vote_count.gte":100,
+page:1
+});
+renderCards("quiz-result-grid",data.results.slice(0,8));
+$("quiz-result-status").textContent = data.results.length ? "Here are your movie matches!" : "No matches found.";
+} catch(error) {
+$("quiz-result-status").textContent = error.message;
+}
+}
+$("quiz-restart").onclick = () => {
+questionIndex = 0;
+answers = [];
+showQuizPart("quiz-start");
+};
+fillYears();
+saveWatchlist();
+navigate();
+loadNowShowing();
+loadGenres();
+loadDiscover();
+</script>
 </body>
 </html>
