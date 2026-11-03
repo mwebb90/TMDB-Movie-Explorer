@@ -1,173 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>TMDB Movie Explorer</title>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TMDB Movie Explorer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header>
-<a class="logo" href="#home">🎟 TMDB MOVIE EXPLORER</a>
-<nav>
-<a href="#home">Home</a>
-<a href="#now-showing">Now Showing</a>
-<a href="#quiz">Movie Quiz</a>
-<a href="#discover">Discover</a>
-<a href="#watchlist">Watchlist <span id="watch-count"></span></a>
-</nav>
-</header>
-<main>
-<section id="home" class="page active">
-<div class="curtains">
-<p class="center gold">✦ WELCOME TO THE CINEMA ✦</p>
-<div class="marquee">
-<div class="marquee-inner">
-<h1>TMDB MOVIE EXPLORER</h1>
-<p>Your Ticket to Movie Discovery</p>
-</div>
-</div>
-<div class="intro">
-<h2>🍿 Coming Attractions 🍿</h2>
-<p>Step into the world of movies! Discover popular films, explore different genres, search for your favorites, and build your own personal watchlist.</p>
-</div>
-<div class="feature-grid">
-<a class="feature" href="#now-showing">
-<div class="symbol">🎞️</div>
-<h3>Now Showing</h3>
-<p>Browse popular movies and explore new titles.</p>
-</a>
-<a class="feature" href="#quiz">
-<div class="symbol">🎟️</div>
-<h3>Movie Matchmaker</h3>
-<p>Take a quiz to find your perfect match.</p>
-</a>
-<a class="feature" href="#discover">
-<div class="symbol">🎬</div>
-<h3>Explore Genres</h3>
-<p>Discover movies based on the genres you love.</p>
-</a>
-<a class="feature" href="#watchlist">
-<div class="symbol">🍿</div>
-<h3>My Watchlist</h3>
-<p>Save movies you want to watch and keep them in one place.</p>
-</a>
-</div>
-<div class="closing">
-<h2>Lights. Camera. Discover.</h2>
-<p>Your next favorite movie is just a click away.</p>
-</div>
-</div>
-</section>
-<section id="now-showing" class="page">
-<div class="curtains">
-<div class="marquee">
-<div class="marquee-inner">
-<h1>NOW SHOWING</h1>
-<p>POPULAR MOVIES SHOWING NOW</p>
-</div>
-</div>
-<div id="now-status" class="status"></div>
-<div id="now-grid" class="movie-grid"></div>
-</div>
-</section>
-<section id="discover" class="page">
-<div class="marquee">
-<div class="marquee-inner">
-<h1>THE BOX OFFICE</h1>
-<p>SEARCH. EXPLORE. FIND YOUR NEXT FAVORITE FILM.</p>
-</div>
-</div>
-<form id="search-form" class="search-form">
-<input id="search-input" placeholder="Search for a movie..." aria-label="Movie search">
-<button type="submit">Search</button>
-</form>
-<div class="filters">
-<select id="genre-filter"><option value="">All Genres</option></select>
-<select id="year-filter"><option value="">All Years</option></select>
-<select id="sort-filter">
-<option value="popularity.desc">Most Popular</option>
-<option value="vote_average.desc">Highest Rated</option>
-<option value="primary_release_date.desc">Newest</option>
-<option value="primary_release_date.asc">Oldest</option>
-</select>
-</div>
-<div id="discover-status" class="status"></div>
-<div id="discover-grid" class="movie-grid"></div>
-<div class="pagination">
-<button id="prev-page">Previous</button>
-<span id="page-number"></span>
-<button id="next-page">Next</button>
-</div>
-</section>
-<section id="details" class="page">
-<div id="detail-content"></div>
-</section>
-<section id="watchlist" class="page">
-<div class="marquee">
-<div class="marquee-inner">
-<h1>MY WATCHLIST</h1>
-<p>YOUR SAVED MOVIES</p>
-</div>
-</div>
-<div id="watchlist-grid" class="watchlist-grid"></div>
-<div id="empty-watchlist" class="empty" hidden>
-<div style="font-size:70px">🍿</div>
-<h2>Your watchlist is empty!</h2>
-<p>Start exploring and save your favorite movies.</p>
-<a href="#discover"><button>Explore Movies</button></a>
-</div>
-</section>
-<section id="quiz" class="page">
-<div id="quiz-start" class="quiz-start">
-<div class="quiz-sign">
-🎬
-<h1>READY TO FIND YOUR<br>PERFECT MATCH?</h1>
-<button id="start-quiz">LET'S GO</button>
-</div>
-</div>
-<div id="quiz-questions" hidden>
-<div class="marquee">
-<div class="marquee-inner">
-<h1>FIND YOUR PERFECT MATCH</h1>
-<p>Your next movie night starts here.</p>
-</div>
-</div>
-<div class="quiz-progress">
-<span id="question-count"></span>
-<span id="progress-label"></span>
-</div>
-<div class="progress-track">
-<div id="progress-fill" class="progress-fill"></div>
-</div>
-<h2 id="question-text" class="quiz-question"></h2>
-<div id="answer-options" class="answer-grid"></div>
-<div class="quiz-actions">
-<button id="quiz-back">Back</button>
-<button id="quiz-next">Next</button>
-</div>
-</div>
-<div id="quiz-results" hidden>
-<div class="marquee">
-<div class="marquee-inner">
-<h1>YOUR MOVIE MATCHES</h1>
-<p>THE SHOW IS ABOUT TO BEGIN</p>
-</div>
-</div>
-<div id="quiz-result-status" class="status"></div>
-<div id="quiz-result-grid" class="movie-grid"></div>
-<div class="center">
-<button id="quiz-restart">Take Quiz Again</button>
-</div>
-</div>
-</section>
-</main>
-<footer>
-TMDB Movie Explorer | IT 4403 | 2026
-<br>
-<small>This product uses the TMDB API but is not endorsed or certified by TMDB.</small>
-</footer>
-<script src="script.js"></script>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="#home" class="logo">🎟️ TMDB <span>MOVIE EXPLORER</span></a>
+      <nav aria-label="Main navigation">
+        <a href="#home">Home</a><a href="#now-showing">Now Showing</a><a href="#quiz">Movie Quiz</a><a href="#discover">Discover</a><a href="#watchlist">Watchlist <span id="watch-count">(0)</span></a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <section id="home" class="page active">
+      <div class="hero theater-frame">
+        <p class="eyebrow">✦ WELCOME TO THE CINEMA ✦</p>
+        <h1>TMDB MOVIE EXPLORER</h1>
+        <p class="subtitle">Your Ticket to Movie Discovery</p>
+        <div class="marquee-sign"><span>🍿 COMING ATTRACTIONS 🍿</span></div>
+        <p class="hero-copy">Step into the world of movies! Discover popular films, explore different genres, search for your favorites, and build your own personal watchlist.</p>
+        <a class="primary-button" href="#now-showing">Explore Movies →</a>
+      </div>
+      <div class="feature-grid">
+        <a class="feature-card" href="#now-showing"><span class="feature-icon">🎬</span><h2>NOW SHOWING</h2><p>Browse popular movies and explore new titles.</p></a>
+        <a class="feature-card" href="#quiz"><span class="feature-icon">🎟️</span><h2>MOVIE MATCHMAKER</h2><p>Take a quiz to find your perfect match.</p></a>
+        <a class="feature-card" href="#discover"><span class="feature-icon">🎭</span><h2>EXPLORE GENRES</h2><p>Discover movies based on the genres you love.</p></a>
+        <a class="feature-card" href="#watchlist"><span class="feature-icon">🍿</span><h2>MY WATCHLIST</h2><p>Keep your favorite films in one place.</p></a>
+      </div>
+    </section>
+    <section id="now-showing" class="page">
+      <div class="section-heading theater-frame"><p class="eyebrow">✦ THE MAIN FEATURE ✦</p><h1>NOW SHOWING</h1><p>Popular movies and all-time favorites, one ticket away.</p></div>
+      <form id="search-form" class="search-form"><label class="sr-only" for="search-input">Movie title</label><input id="search-input" placeholder="Search for a movie..." required><button type="submit">Search Movies</button><button type="button" id="popular-button" class="secondary-button">Popular Movies</button></form>
+      <p id="movies-status" class="status" role="status"></p><div id="movie-grid" class="movie-grid"></div>
+    </section>
+    <section id="discover" class="page">
+      <div class="section-heading theater-frame"><p class="eyebrow">✦ FIND YOUR NEXT FAVORITE ✦</p><h1>DISCOVER MOVIES</h1><p>Choose a genre to explore.</p></div>
+      <div class="filter-bar"><label for="genre-select">Genre</label><select id="genre-select"><option value="">Choose a genre</option></select><button id="discover-button" type="button">Discover</button></div>
+      <p id="discover-status" class="status" role="status"></p><div id="discover-grid" class="movie-grid"></div>
+    </section>
+    <section id="quiz" class="page">
+      <div class="section-heading theater-frame"><p class="eyebrow">✦ YOUR MOVIE MATCHMAKER ✦</p><h1>MOVIE QUIZ</h1><p>Find a movie to fit your mood tonight.</p></div>
+      <div class="quiz-box"><h2>What are you in the mood for?</h2><div class="answer-grid"><button type="button" data-genre="28">💥 Action & Adventure</button><button type="button" data-genre="35">😂 Comedy</button><button type="button" data-genre="10749">❤️ Romance</button><button type="button" data-genre="27">👻 Horror</button><button type="button" data-genre="878">🚀 Science Fiction</button><button type="button" data-genre="16">✨ Animation</button></div><p id="quiz-status" class="status" role="status"></p><div id="quiz-grid" class="movie-grid"></div></div>
+    </section>
+    <section id="watchlist" class="page">
+      <div class="section-heading theater-frame"><p class="eyebrow">✦ YOUR PERSONAL COLLECTION ✦</p><h1>MY WATCHLIST</h1><p>Save movies to watch later.</p></div>
+      <p id="watchlist-status" class="status" role="status"></p><div id="watchlist-grid" class="movie-grid"></div>
+    </section>
+    <section id="details" class="page"><button type="button" id="back-button" class="secondary-button">← Back</button><div id="details-content"></div></section>
+  </main>
+  <footer>🍿 TMDB Movie Explorer · Movie data provided by TMDB. This product uses the TMDB API but is not endorsed or certified by TMDB.</footer>
+  <script src="script.js"></script>
 </body>
 </html>
