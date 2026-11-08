@@ -237,4 +237,9 @@ yearFilter.addEventListener("change", () => loadMovies(1));
 sortFilter.addEventListener("change", () => loadMovies(1));
 loadGenres();
 loadYears();
-loadMovies();
+const movieId = new URLSearchParams(window.location.search).get("movie");
+if (movieId && /^\d+$/.test(movieId)) {
+  showDetails(Number(movieId));
+} else {
+  loadMovies();
+}
