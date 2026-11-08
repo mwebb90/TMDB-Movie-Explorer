@@ -176,6 +176,19 @@ async function showDetails(id) {
     title.textContent = movie.title;
     const rating = document.createElement("p");
     rating.textContent = `⭐ ${(movie.vote_average || 0).toFixed(1)}/10`;
+    const movieInfo = document.createElement("p");
+const releaseYear = movie.release_date
+  ? movie.release_date.substring(0, 4)
+  : "Unknown Year";
+const runtime = movie.runtime
+  ? `${Math.floor(movie.runtime / 60)}h ${movie.runtime % 60}m`
+  : "Runtime unavailable";
+movieInfo.textContent = `${releaseYear}  •  ${runtime}`;
+const genreInfo = document.createElement("p");
+genreInfo.className = "movie-genres";
+genreInfo.textContent = (movie.genres || [])
+  .map(genre => genre.name)
+  .join("  •  ") || "Genres unavailable";
     const overview = document.createElement("p");
     overview.textContent = movie.overview || "No description available.";
     const watchButton = document.createElement("button");
@@ -188,7 +201,15 @@ async function showDetails(id) {
         ? "♥ Remove from Watchlist"
         : "♡ Add to Watchlist";
     };
-    detailsContent.append(poster, title, rating, overview, watchButton);
+    detailsContent.append(
+      poster,
+      title,
+      rating,
+      movieInfo,
+      genreInfo,
+      overview,
+      watchButton
+    );
     detailsSection.scrollIntoView({ behavior: "smooth" });
   } catch (error) {
     resultsSection.hidden = false;
