@@ -12,6 +12,7 @@ const pagination = document.getElementById("discover-pagination");
 const detailsSection = document.getElementById("discover-details");
 const detailsContent = document.getElementById("discover-details-content");
 const resultsSection = document.querySelector(".discover-results");
+const searchSection = document.getElementById("discover-search-section");
 let currentPage = 1;
 let currentMovies = [];
 async function getMovies(endpoint, params = {}) {
@@ -163,6 +164,7 @@ async function showDetails(id) {
   try {
     statusText.textContent = "Loading details...";
     resultsSection.hidden = true;
+    searchSection.hidden = true;
     const movie = await getMovies(`movie/${id}`);
     detailsSection.hidden = false;
     detailsContent.replaceChildren();
@@ -227,6 +229,9 @@ detailsSection.insertBefore(
 document.getElementById("back-to-results").onclick = () => {
   detailsSection.hidden = true;
   resultsSection.hidden = false;
+  searchSection.hidden = false;
+  window.history.replaceState({},"", "discover.html");
+  loadMovies(1);
 };
 searchForm.addEventListener("submit", event => {
   event.preventDefault();
