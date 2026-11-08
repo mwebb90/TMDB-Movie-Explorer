@@ -1,1 +1,44 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Now Showing | TMDB Movie Explorer</title>
+  <link rel="stylesheet" href="now-showing.css">
+  <script src="now-showing.js" defer></script>
+</head>
+<body>
+  <div class="theater">
+    <div class="curtain curtain-left"></div>
+    <div class="curtain curtain-right"></div>
+    <main class="theater-content">
+      <header class="marquee">
+        <div class="marquee-inner">
+          <h1>NOW SHOWING</h1>
+          <p>POPULAR MOVIES SHOWING NOW</p>
+        </div>
+      </header>
+      <section class="movies-section">
+        <p id="movie-status" role="status">
+          Loading movies...
+        </p>
+        <div id="movie-grid" class="movie-grid"></div>
+      </section>
+    </main>
+  </div>
+  <footer class="site-footer">
+    <a class="footer-brand" href="index.html">
+      🎬 TMDB MOVIE EXPLORER
+    </a>
+    <nav aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="now-showing.html" aria-current="page">
+        Now Showing
+      </a>
+      <a href="movie-quiz.html">Movie Quiz</a>
+      <a href="discover.html">Discover</a>
+      <a href="watchlist.html">Watchlist</a>
+    </nav>
+  </footer>
+</body>
+</html>
