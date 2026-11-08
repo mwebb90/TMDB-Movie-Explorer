@@ -214,3 +214,37 @@ body {
     font-size: 18px;
   }
 }
+/* Now Showing top navigation */
+.site-header {
+  position: relative;
+  z-index: 100;
+  width: 100%;
+  background: #171419;
+  border-bottom: 3px solid #e7b86b;
+  padding: 14px 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.site-header .brand {
+  color: #e7b86b;
+  font-size: 22px;
+  font-weight: bold;
+}
+.site-header .main-nav {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.site-header .main-nav a {
+  color: #f7e9d0;
+  text-decoration: none;
+  font-size: 15px;
+}
+.site-header .main-nav a:hover,
+.site-header .main-nav a.active {
+  color: #e7b86b;
+  text-decoration: underline;
+}
