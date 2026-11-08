@@ -154,3 +154,79 @@
     flex-direction: column;
   }
 }
+/* MOVIE DETAILS SCREEN */
+.discover-details {
+  max-width: 1150px;
+  margin: 45px auto;
+  padding: 45px;
+  background: linear-gradient(145deg, #301923, #18151b);
+  border: 3px solid #e9b768;
+  border-radius: 18px;
+  box-shadow: 0 0 30px rgba(233, 183, 104, 0.2);
+}
+#discover-details-content {
+  display: grid;
+  grid-template-columns: 300px minmax(0, 1fr);
+  column-gap: 45px;
+  align-items: start;
+}
+#discover-details-content > img {
+  width: 100%;
+  max-width: 300px;
+  border: 4px solid #e9b768;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  grid-row: span 5;
+}
+#discover-details-content h2 {
+  color: #ffd38a;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(36px, 5vw, 58px);
+  margin: 0 0 12px;
+}
+#discover-details-content p {
+  font-size: 17px;
+  line-height: 1.8;
+  color: #f6e7d7;
+  margin: 0 0 20px;
+}
+#discover-details-content p:first-of-type {
+  color: #ffd04b;
+  font-weight: bold;
+  font-size: 22px;
+}
+#discover-details-content button {
+  background: #8b1826;
+  color: #fff1df;
+  border: 2px solid #e9b768;
+  border-radius: 30px;
+  padding: 14px 25px;
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+  width: fit-content;
+}
+#discover-details-content button:hover,
+#back-to-results:hover {
+  background: #b52c3b;
+  box-shadow: 0 0 12px rgba(233, 183, 104, 0.5);
+}
+#back-to-results {
+  margin-top: 30px;
+}
+@media (max-width: 750px) {
+  .discover-details {
+    padding: 22px;
+  }
+  #discover-details-content {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  #discover-details-content > img {
+    grid-row: auto;
+    margin: 0 auto;
+  }
+  #discover-details-content h2 {
+    text-align: center;
+  }
+}
