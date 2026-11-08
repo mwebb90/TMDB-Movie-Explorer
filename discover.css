@@ -1,0 +1,156 @@
+.discover-page {
+  min-height: 100vh;
+  background: #18151b;
+  color: #f6e7d7;
+  padding: 30px 5% 80px;
+  position: relative;
+}
+.box-office-header {
+  max-width: 1050px;
+  margin: 0 auto 55px;
+  text-align: center;
+  position: relative;
+}
+.discover-marquee {
+  background: #501c2b;
+  border: 12px dotted #ffb45c;
+  outline: 5px solid #b82b26;
+  border-radius: 5px;
+  padding: 24px 15px;
+  box-shadow: 0 0 25px #b82b26;
+  margin-bottom: 30px;
+}
+.discover-marquee h1 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(42px, 7vw, 76px);
+  font-weight: 800;
+  color: #ffd38a;
+  margin: 0;
+  text-shadow: 0 0 15px #e9b768;
+}
+.discover-marquee p {
+  font-weight: 700;
+  font-size: 16px;
+  margin: 10px 0 0;
+}
+.movie-search {
+  display: flex;
+  gap: 20px;
+  max-width: 900px;
+  margin: 0 auto 15px;
+}
+.movie-search input {
+  flex: 1;
+  min-width: 0;
+  background: #18151b;
+  border: 3px solid #e9b768;
+  border-radius: 40px;
+  padding: 15px 25px;
+  color: white;
+  font-size: 16px;
+}
+.movie-search button,
+.discover-movie-card button,
+#back-to-results {
+  background: #c83e43;
+  color: #fff1df;
+  border: 3px solid #e9b768;
+  border-radius: 30px;
+  padding: 12px 26px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.discover-filters {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.discover-filters select {
+  background: #18151b;
+  color: #f6e7d7;
+  border: 2px solid #e9b768;
+  border-radius: 30px;
+  padding: 12px 18px;
+  min-width: 145px;
+}
+.discover-results {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+#discover-status {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.discover-movie-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 35px;
+}
+.discover-movie-card {
+  background: #501c2b;
+  border: 4px double #e9b768;
+  padding: 12px;
+  text-align: center;
+}
+.discover-movie-card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  border: 3px solid #e9b768;
+}
+.discover-movie-card h3 {
+  font-size: 15px;
+  margin: 14px 0 8px;
+}
+.discover-movie-card .rating {
+  color: #ffd04b;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+.discover-card-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.discover-card-actions .details-button {
+  flex: 1;
+  padding: 10px 6px;
+}
+.discover-card-actions .heart-button {
+  padding: 8px 12px;
+  font-size: 22px;
+}
+.discover-card-actions .heart-button.saved {
+  background: #8b1826;
+}
+.discover-details {
+  max-width: 1100px;
+  margin: 40px auto;
+  border: 3px solid #e9b768;
+  padding: 30px;
+  background: #18151b;
+}
+.discover-details[hidden] {
+  display: none;
+}
+#discover-pagination {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 35px;
+}
+@media (max-width: 900px) {
+  .discover-movie-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 500px) {
+  .discover-movie-grid {
+    grid-template-columns: 1fr;
+  }
+  .movie-search {
+    flex-direction: column;
+  }
+}
