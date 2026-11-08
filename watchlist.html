@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Watchlist | TMDB Movie Explorer</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="watchlist.css">
+  <script src="watchlist.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">🎬 TMDB MOVIE EXPLORER</div>
+    <nav class="main-nav" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="now-showing.html">Now Showing</a>
+      <a href="matchmaker.html">Movie Quiz</a>
+      <a href="discover.html">Discover</a>
+      <a href="watchlist.html" class="active">Watchlist</a>
+    </nav>
+  </header>
+  <main class="watchlist-page">
+    <section class="watchlist-header">
+      <div class="watchlist-marquee">
+        <h1>MY WATCHLIST</h1>
+        <p>YOUR SAVED MOVIES</p>
+      </div>
+    </section>
+    <section class="watchlist-content"
+      aria-label="Saved movies">
+      <div id="watchlist-grid"
+        class="watchlist-grid">
+      </div>
+      <div id="watchlist-empty"
+        class="watchlist-empty"
+        hidden>
+        <div class="popcorn-icon" aria-hidden="true">
+          🍿
+        </div>
+        <h2>Your watchlist is empty!</h2>
+        <p>
+          Start exploring and save your favorite movies.
+        </p>
+        <a href="discover.html"
+          class="explore-movies-button">
+          Explore Movies
+        </a>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="brand">🎬 TMDB MOVIE EXPLORER</div>
+    <nav aria-label="Footer navigation">
+      <a href="index.html">Home</a>
+      <a href="now-showing.html">Now Showing</a>
+      <a href="matchmaker.html">Movie Quiz</a>
+      <a href="discover.html">Discover</a>
+      <a href="watchlist.html">Watchlist</a>
+    </nav>
+  </footer>
+</body>
+</html>
