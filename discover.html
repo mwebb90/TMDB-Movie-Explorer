@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Box Office | TMDB Movie Explorer</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="discover.css">
+  <script src="discover.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">🎬 TMDB MOVIE EXPLORER</div>
+    <nav class="main-nav" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="now-showing.html">Now Showing</a>
+      <a href="matchmaker.html">Movie Quiz</a>
+      <a href="discover.html" class="active">Discover</a>
+      <a href="watchlist.html">Watchlist</a>
+    </nav>
+  </header>
+  <main class="discover-page">
+    <section class="box-office-header">
+      <div class="discover-marquee">
+        <h1>THE BOX OFFICE</h1>
+        <p>SEARCH. EXPLORE. FIND YOUR NEXT FAVORITE FILM.</p>
+      </div>
+      <form id="movie-search-form" class="movie-search">
+        <input type="search" id="movie-search"
+          placeholder="Search for a movie..."
+          aria-label="Search for a movie">
+        <button type="submit">Search</button>
+      </form>
+      <div class="discover-filters">
+        <select id="genre-filter" aria-label="Filter by genre">
+          <option value="">All Genres</option>
+        </select>
+        <select id="year-filter" aria-label="Filter by year">
+          <option value="">All Years</option>
+        </select>
+        <select id="sort-filter" aria-label="Sort movies">
+          <option value="popularity.desc">Sort By</option>
+          <option value="vote_average.desc">Highest Rated</option>
+          <option value="release_date.desc">Newest</option>
+          <option value="title.asc">Title A-Z</option>
+        </select>
+      </div>
+    </section>
+    <section class="discover-results">
+      <p id="discover-status" role="status"></p>
+      <div id="discover-movie-grid" class="discover-movie-grid"></div>
+      <div id="discover-pagination"></div>
+    </section>
+    <section id="discover-details" class="discover-details" hidden>
+      <div id="discover-details-content"></div>
+      <button type="button" id="back-to-results">
+        Back to Results
+      </button>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="brand">🎬 TMDB MOVIE EXPLORER</div>
+    <nav aria-label="Footer navigation">
+      <a href="index.html">Home</a>
+      <a href="now-showing.html">Now Showing</a>
+      <a href="matchmaker.html">Movie Quiz</a>
+      <a href="discover.html">Discover</a>
+      <a href="watchlist.html">Watchlist</a>
+    </nav>
+  </footer>
+</body>
+</html>
