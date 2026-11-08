@@ -1,0 +1,213 @@
+/* WATCHLIST PAGE */
+.watchlist-page {
+  min-height: 100vh;
+  background: #18151b;
+  color: #f6e7d7;
+  padding: 35px 4% 80px;
+  font-family: 'Montserrat', sans-serif;
+}
+/* THEATER MARQUEE */
+.watchlist-header {
+  max-width: 1000px;
+  margin: 0 auto 45px;
+  text-align: center;
+}
+.watchlist-marquee {
+  background: #501c2b;
+  border: 10px dotted #ffe0a0;
+  outline: 5px solid #a82729;
+  padding: 25px 15px;
+  box-shadow:
+    0 0 12px #ff9b4a,
+    0 0 30px rgba(255, 132, 42, 0.45),
+    inset 0 0 18px rgba(255, 183, 104, 0.2);
+}
+.watchlist-marquee h1 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(46px, 7vw, 80px);
+  font-weight: 800;
+  color: #ffd38a;
+  text-shadow: 0 0 15px #e9b768;
+  margin: 0;
+}
+.watchlist-marquee p {
+  font-size: 19px;
+  font-weight: 700;
+  margin: 10px 0 0;
+}
+/* SAVED MOVIE TICKETS */
+.watchlist-content {
+  max-width: 1250px;
+  margin: 0 auto;
+}
+.watchlist-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 35px 45px;
+}
+.watchlist-ticket {
+  position: relative;
+  display: flex;
+  gap: 15px;
+  align-items: flex-start;
+  min-width: 0;
+  padding: 25px;
+  background: #fff0dc;
+  color: #501c2b;
+  border: 3px solid #f1d4b4;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  clip-path: polygon(
+    5% 0, 95% 0,
+    100% 8%, 100% 92%,
+    95% 100%, 5% 100%,
+    0 92%, 0 8%
+  );
+}
+.watchlist-ticket-poster {
+  width: 135px;
+  max-width: 35%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  border: 3px solid #e9b768;
+  flex-shrink: 0;
+}
+.watchlist-ticket-info {
+  flex: 1;
+  min-width: 0;
+}
+.watchlist-ticket h3 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(25px, 3vw, 35px);
+  line-height: 1.1;
+  margin: 0 25px 12px 0;
+  color: #501c2b;
+}
+.watchlist-ticket-meta {
+  font-size: 17px;
+  margin-bottom: 12px;
+}
+.watchlist-ticket-rating {
+  color: #501c2b;
+  font-size: 22px;
+  margin-bottom: 15px;
+}
+.watchlist-ticket-rating .star {
+  color: #f4b92e;
+  font-size: 28px;
+}
+.watchlist-ticket-genres {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-bottom: 12px;
+}
+.watchlist-genre {
+  border: 2px solid #501c2b;
+  border-radius: 20px;
+  padding: 4px 10px;
+  font-size: 12px;
+  white-space: nowrap;
+}
+.watchlist-remove {
+  position: absolute;
+  right: 18px;
+  top: 15px;
+  background: transparent;
+  color: #e3433d;
+  border: none;
+  font-size: 32px;
+  cursor: pointer;
+}
+.watchlist-remove:hover {
+  color: #a81925;
+  transform: scale(1.1);
+}
+.watchlist-view-details {
+  display: inline-block;
+  background: #8b1826;
+  color: white;
+  border: 2px solid #e9b768;
+  border-radius: 25px;
+  padding: 9px 15px;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+/* EMPTY WATCHLIST / THEATER SEATS */
+.watchlist-empty {
+  text-align: center;
+  padding: 100px 20px 110px;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 14%,
+      rgba(0, 0, 0, 0.18) 14% 16%
+    ),
+    repeating-linear-gradient(
+      0deg,
+      #501c2b 0 75px,
+      #6e2232 75px 115px,
+      #18151b 115px 135px
+    );
+  border-radius: 20px;
+  margin-top: 35px;
+}
+.watchlist-empty[hidden] {
+  display: none;
+}
+.popcorn-icon {
+  font-size: 90px;
+  margin-bottom: 15px;
+}
+.watchlist-empty h2 {
+  color: #ffd38a;
+  font-size: 26px;
+  margin-bottom: 12px;
+}
+.watchlist-empty p {
+  font-size: 18px;
+  margin-bottom: 25px;
+}
+.explore-movies-button {
+  display: inline-block;
+  background: #8b1826;
+  color: #fff1df;
+  border: 2px solid #e9b768;
+  border-radius: 30px;
+  padding: 13px 25px;
+  text-decoration: none;
+  font-weight: 700;
+}
+.explore-movies-button:hover,
+.watchlist-view-details:hover {
+  background: #b52c3b;
+}
+/* RESPONSIVE LAYOUT */
+@media (max-width: 850px) {
+  .watchlist-grid {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 480px) {
+  .watchlist-page {
+    padding: 25px 3% 60px;
+  }
+  .watchlist-ticket {
+    padding: 15px;
+    gap: 10px;
+  }
+  .watchlist-ticket-poster {
+    width: 100px;
+  }
+  .watchlist-ticket-meta {
+    font-size: 14px;
+  }
+  .watchlist-ticket-rating {
+    font-size: 18px;
+  }
+  .watchlist-marquee p {
+    font-size: 14px;
+  }
+}
