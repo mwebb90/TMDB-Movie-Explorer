@@ -207,9 +207,9 @@ genreInfo.textContent = (movie.genres || [])
       rating,
       movieInfo,
       genreInfo,
-      overview,
-      watchButton
+      overview
     );
+    detailsSection.appendChild(watchButton);
     detailsSection.scrollIntoView({ behavior: "smooth" });
   } catch (error) {
     resultsSection.hidden = false;
