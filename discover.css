@@ -230,3 +230,31 @@
     text-align: center;
   }
 }
+/* MOVIE DETAILS BUTTON LAYOUT */
+.discover-details {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+.discover-details[hidden] {
+  display: none;
+}
+#discover-details-content {
+  flex: 0 0 100%;
+}
+.discover-details > button {
+  background: #8b1826;
+  color: #fff1df;
+  border: 2px solid #e9b768;
+  border-radius: 30px;
+  padding: 14px 25px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 0;
+}
+.discover-details > button:hover {
+  background: #b52c3b;
+  box-shadow: 0 0 12px rgba(233, 183, 104, 0.5);
+}
