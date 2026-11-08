@@ -2,8 +2,8 @@
 
 // Add your own TMDB v3 API key here. Do not commit private credentials to a public repository.
 // A browser-only GitHub Pages project exposes any key placed in this file.
-const TMDB_API_KEY = "YOUR_TMDB_API_KEY_HERE";
-const API_BASE = "https://api.themoviedb.org/3";
+const TMDB_API_KEY = "";
+const API_BASE = "https://tmdb-movie-api-220914907216.us-east1.run.app";
 const POSTER_BASE = "https://image.tmdb.org/t/p/w500";
 const WATCHLIST_KEY = "tmdb-movie-explorer-watchlist";
 let previousPage = "now-showing";
@@ -23,17 +23,17 @@ function saveWatchlist() {
 function updateWatchCount() {
   document.getElementById("watch-count").textContent = `(${watchlist.length})`;
 }
-function hasApiKey() {
-  return TMDB_API_KEY && TMDB_API_KEY !== "YOUR_TMDB_API_KEY_HERE";
-}
 async function api(endpoint, params = {}) {
-  if (!hasApiKey()) throw new Error("Add your TMDB API key in script.js to load movies.");
-  const url = new URL(API_BASE + endpoint);
-  url.searchParams.set("api_key", TMDB_API_KEY);
+  const url = new URL(API_BASE);
+  url.searchParams.set("endpoint", endpoint);
   url.searchParams.set("language", "en-US");
-  for (const [key, value] of Object.entries(params)) url.searchParams.set(key, String(value));
+  for (const [key, value] of Object.entries(params)) {
+    url.searchParams.set(key, String(value));
+  }
   const response = await fetch(url);
-  if (!response.ok) throw new Error(`TMDB request failed (${response.status}). Check your API key or try again.`);
+  if (!response.ok) {
+    throw new Error(`Movie request failed (${response.status}).`);
+  }
   return response.json();
 }
 function setStatus(id, message) { document.getElementById(id).textContent = message; }
