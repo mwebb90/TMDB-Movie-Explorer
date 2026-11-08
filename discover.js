@@ -162,8 +162,8 @@ function loadYears() {
 async function showDetails(id) {
   try {
     statusText.textContent = "Loading details...";
-    const movie = await getMovies(`movie/${id}`);
     resultsSection.hidden = true;
+    const movie = await getMovies(`movie/${id}`);
     detailsSection.hidden = false;
     detailsContent.replaceChildren();
     const poster = document.createElement("img");
