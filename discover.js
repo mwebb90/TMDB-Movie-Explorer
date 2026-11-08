@@ -209,7 +209,15 @@ genreInfo.textContent = (movie.genres || [])
       genreInfo,
       overview
     );
-    detailsSection.appendChild(watchButton);
+    const oldWatchButton = detailsSection.querySelector(".details-watch-button");
+if (oldWatchButton) {
+  oldWatchButton.remove();
+}
+watchButton.classList.add("details-watch-button");
+detailsSection.insertBefore(
+  watchButton,
+  document.getElementById("back-to-results")
+);
     detailsSection.scrollIntoView({ behavior: "smooth" });
   } catch (error) {
     resultsSection.hidden = false;
